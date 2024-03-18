@@ -4,10 +4,47 @@ date: 2024-03-19 01:20:34
 tags:
 ---
 
-再次测试！！！
-有点搞笑 哈哈哈哈哈
+两台电脑同时部署博客操作（个人看）
 
-🤯
+### 开始时：
 
-123
+
+
+```
+git pull
+```
+
+
+
+### 快乐的写写写！！！！
+
+
+
+哈～
+
+
+
+### 终于写完了！！！
+
+
+
+hexo 部署到main branch
+
+```bash
+hexo g
+hexo s
+hexo d
+```
+
+
+
+Git 来同步我们的修改
+
+```
+git add .
+git commit -m (some comments)
+git push
+```
+
+
 
