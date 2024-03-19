@@ -17,37 +17,30 @@
     
     
     <entry>
-      <title>test2</title>
-      <link href="/2024/03/19/test2/"/>
-      <url>/2024/03/19/test2/</url>
+      <title>两台电脑同时部署博客操作</title>
+      <link href="/2024/03/19/edit_blog_on_2devices/"/>
+      <url>/2024/03/19/edit_blog_on_2devices/</url>
       
-        <content type="html"><![CDATA[<p>两台电脑同时部署博客操作（个人看）</p><h3 id="开始时："><a href="#开始时：" class="headerlink" title="开始时："></a>开始时：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure><h3 id="快乐的写写写！！！！"><a href="#快乐的写写写！！！！" class="headerlink" title="快乐的写写写！！！！"></a>快乐的写写写！！！！</h3><p>哈～</p><h3 id="终于写完了！！！"><a href="#终于写完了！！！" class="headerlink" title="终于写完了！！！"></a>终于写完了！！！</h3><p>hexo 部署到main branch</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure><p>Git 来同步我们的修改</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m (some comments)</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<p>记录帖</p><p>开始时：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure><p>快乐的写写写！！！！</p><p>哈～</p><p>终于写完了！！！</p><p>hexo 部署到main branch</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure><p>Git 来同步我们的修改</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m (some comments)</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>]]></content>
       
       
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
       
     </entry>
     
     
     
     <entry>
-      <title>abc</title>
-      <link href="/2024/03/19/abc/"/>
-      <url>/2024/03/19/abc/</url>
+      <title>test of latex</title>
+      <link href="/2024/03/19/test_latex/"/>
+      <url>/2024/03/19/test_latex/</url>
       
         <content type="html"><![CDATA[<p>$$f(x)&#x3D;\frac{a}{b}x^2$$</p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>aha</title>
-      <link href="/2024/03/18/aha/"/>
-      <url>/2024/03/18/aha/</url>
-      
-        <content type="html"><![CDATA[<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> *.txt</span><br></pre></td></tr></table></figure><p><code>text</code></p>]]></content>
       
       
       
