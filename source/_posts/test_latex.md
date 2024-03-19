@@ -1,5 +1,5 @@
 ---
-title: abc
+title: test of latex
 date: 2024-03-19 01:06:23
 tags:
 ---
