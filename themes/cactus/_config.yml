@@ -31,9 +31,12 @@ social_links:
     icon: github
     link: https://github.com/jiaoyueLIB
   -
-   
+    icon: weibo
+    link: https://weibo.com/u/3716767341
+  -
     icon: mail
     link: mailto:jiaoyuej0815@163.com
+
  
 
 # Customize the overview with displaying a tagcloud on the index page.
@@ -176,8 +179,8 @@ google_analytics:
 
 # Fill in your Baidu Analytics tracking ID to enable Baidu Analytics.
 baidu_analytics:
-  enabled: false
-  id: 2e6da3c375c8a87f5b664cea6d4cb29c
+  enabled: true
+  id: 08a34aaba5d629ac7643323e26f63573
 
 # Fill in your Cloudflare Analytics tracking ID to enable Cloudflare Analytics.
 cloudflare_analytics:
