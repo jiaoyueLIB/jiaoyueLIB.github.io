@@ -14,7 +14,7 @@ tags: hexo
 
 ​	搞个图床贴图
 
-​	评论区
+​	评论区(done)
 
 ​	修改代码块样式
 
@@ -80,3 +80,8 @@ git branch #查看当前分支
 
 `git config --global credential.helper store`
 
+## 3. 评论区
+
+参考链接：[使用 Utterances 为静态博客添加评论 | ROIFE BLOG](https://roife.github.io/posts/use-utterances-for-blog-comment/)
+
+修改cactus的`.\themes\_config.yml`
