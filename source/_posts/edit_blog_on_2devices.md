@@ -85,3 +85,8 @@ git branch #查看当前分支
 参考链接：[使用 Utterances 为静态博客添加评论 | ROIFE BLOG](https://roife.github.io/posts/use-utterances-for-blog-comment/)
 
 修改cactus的`.\themes\_config.yml`
+
+## 4. 图床测试
+
+![pics](./edit_blog_on_2devices/4)
+
