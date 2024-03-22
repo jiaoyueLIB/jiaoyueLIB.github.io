@@ -7,7 +7,7 @@ title: jiaoyueLIB
 subtitle: piupiupiu
 description: ''
 keywords:
-author: jojojo
+author: jy
 language: en
 timezone: 
 
@@ -104,3 +104,11 @@ deploy:
   type: git
   repository: https://github.com/jiaoyueLIB/jiaoyueLIB.github.io.git
   branch: main
+
+# 自动生成sitemap
+# sitemap
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
+  
