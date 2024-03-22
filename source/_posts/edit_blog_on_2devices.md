@@ -88,5 +88,4 @@ git branch #查看当前分支
 
 ## 4. 图床测试
 
-![pics](./edit_blog_on_2devices/4)
-
+![AIRPLAN2](https://cdn.jsdelivr.net/gh/jiaoyueLIB/images@main/img/AIRPLAN2.JPG)

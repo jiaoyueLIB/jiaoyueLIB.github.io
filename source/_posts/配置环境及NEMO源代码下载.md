@@ -83,7 +83,7 @@ wget http:........etc.
 ```
 所有需要的依赖包见下图
 
-![](https://note.youdao.com/yws/public/resource/61443f14facef299c91e9dd9000e2b11/xmlnote/WEBRESOURCEaa8271f1c91e8248b4f27f89eecfbaf9/18)
+![image-20240322112250779](https://cdn.jsdelivr.net/gh/jiaoyueLIB/images@main/img/image-20240322112250779.png)
 
 ## 编译包
 每安装一个包，要将它的所处路径写进`.bashrc`中。
@@ -152,7 +152,7 @@ wget http:........etc.
 - 一定要添上这两个选项`--enable-netcdf-4 --enable-netcdf4`，否则在XIOS安装时会报错
 	检查是否打开的命令：`nc-config --all`
 	
-	![](https://note.youdao.com/yws/public/resource/61443f14facef299c91e9dd9000e2b11/xmlnote/WEBRESOURCEfafa9db45124243e38f8874d8a6431f6/21)
+	![image-20240322112338017](https://cdn.jsdelivr.net/gh/jiaoyueLIB/images@main/img/image-20240322112338017.png)
 	
 	6. 安装netcdf-fortran 
 		在这步之前提前安装了mpich，并将环境变量改了，见8
@@ -409,7 +409,6 @@ wget http:........etc.
 	```
 	最后的文件夹树的样子：
 	
-	![](https://note.youdao.com/yws/public/resource/61443f14facef299c91e9dd9000e2b11/xmlnote/WEBRESOURCEd2da1d052817ef60031b8134959959b5/23)
+	![image-20240322112349782](https://cdn.jsdelivr.net/gh/jiaoyueLIB/images@main/img/image-20240322112349782.png)
 	
-- ![](https://note.youdao.com/yws/public/resource/203630e3ff0ca394e25eace143f61fc8/xmlnote/WEBRESOURCE801296f89fcf47ef11928b8315dc59f4/4)
-
+	

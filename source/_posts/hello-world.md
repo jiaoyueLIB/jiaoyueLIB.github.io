@@ -39,6 +39,6 @@ $ hexo deploy
 
 ## Test insert picture
 
-![AIRPLAN1](./hello-world/AIRPLAN1.JPG)
+![AIRPLAN1](https://cdn.jsdelivr.net/gh/jiaoyueLIB/images@main/img/AIRPLAN1.JPG)
 
 More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
