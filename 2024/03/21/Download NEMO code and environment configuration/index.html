@@ -9,7 +9,7 @@
     <meta name="description" content="0. 了解超算及编译环境 硬件信息 1lscpu    系统信息 1cat &#x2F;etc&#x2F;os-release  查看自带的软件 1module avail  提交作业的系统—-LSF作业调度系统 12bsub -q ocean_530 -o %J.out mpirun -n 8 .&#x2F;nemo # 提交命令bjobs -l JobID # 查看作业运行状况    基本操作参考  师姐之前装好的cond">
 <meta property="og:type" content="article">
 <meta property="og:title" content="配置环境及NEMO源代码下载">
-<meta property="og:url" content="http://example.com/2024/03/21/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%8ANEMO%E6%BA%90%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD/index.html">
+<meta property="og:url" content="http://example.com/2024/03/21/Download%20NEMO%20code%20and%20environment%20configuration/index.html">
 <meta property="og:site_name" content="jiaoyueLIB">
 <meta property="og:description" content="0. 了解超算及编译环境 硬件信息 1lscpu    系统信息 1cat &#x2F;etc&#x2F;os-release  查看自带的软件 1module avail  提交作业的系统—-LSF作业调度系统 12bsub -q ocean_530 -o %J.out mpirun -n 8 .&#x2F;nemo # 提交命令bjobs -l JobID # 查看作业运行状况    基本操作参考  师姐之前装好的cond">
 <meta property="og:locale" content="en_US">
@@ -98,8 +98,6 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" aria-label="Previous post" href="/2024/03/22/test-pic2/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
-        
         
         <li><a class="icon" aria-label="Next post" href="/2024/03/19/hello-world/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
@@ -114,17 +112,17 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/03/21/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%8ANEMO%E6%BA%90%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/03/21/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%8ANEMO%E6%BA%90%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD/&text=配置环境及NEMO源代码下载"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/03/21/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%8ANEMO%E6%BA%90%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD/&title=配置环境及NEMO源代码下载"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/03/21/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%8ANEMO%E6%BA%90%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD/&is_video=false&description=配置环境及NEMO源代码下载"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=配置环境及NEMO源代码下载&body=Check out this article: http://example.com/2024/03/21/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%8ANEMO%E6%BA%90%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/03/21/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%8ANEMO%E6%BA%90%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD/&title=配置环境及NEMO源代码下载"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/03/21/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%8ANEMO%E6%BA%90%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD/&title=配置环境及NEMO源代码下载"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/03/21/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%8ANEMO%E6%BA%90%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD/&title=配置环境及NEMO源代码下载"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/03/21/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%8ANEMO%E6%BA%90%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD/&title=配置环境及NEMO源代码下载"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/03/21/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%8ANEMO%E6%BA%90%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD/&name=配置环境及NEMO源代码下载&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/03/21/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%8ANEMO%E6%BA%90%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD/&t=配置环境及NEMO源代码下载"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/03/21/Download%20NEMO%20code%20and%20environment%20configuration/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/03/21/Download%20NEMO%20code%20and%20environment%20configuration/&text=配置环境及NEMO源代码下载"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/03/21/Download%20NEMO%20code%20and%20environment%20configuration/&title=配置环境及NEMO源代码下载"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/03/21/Download%20NEMO%20code%20and%20environment%20configuration/&is_video=false&description=配置环境及NEMO源代码下载"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=配置环境及NEMO源代码下载&body=Check out this article: http://example.com/2024/03/21/Download%20NEMO%20code%20and%20environment%20configuration/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/03/21/Download%20NEMO%20code%20and%20environment%20configuration/&title=配置环境及NEMO源代码下载"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/03/21/Download%20NEMO%20code%20and%20environment%20configuration/&title=配置环境及NEMO源代码下载"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/03/21/Download%20NEMO%20code%20and%20environment%20configuration/&title=配置环境及NEMO源代码下载"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/03/21/Download%20NEMO%20code%20and%20environment%20configuration/&title=配置环境及NEMO源代码下载"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/03/21/Download%20NEMO%20code%20and%20environment%20configuration/&name=配置环境及NEMO源代码下载&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/03/21/Download%20NEMO%20code%20and%20environment%20configuration/&t=配置环境及NEMO源代码下载"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -288,17 +286,17 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/03/21/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%8ANEMO%E6%BA%90%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/03/21/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%8ANEMO%E6%BA%90%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD/&text=配置环境及NEMO源代码下载"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/03/21/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%8ANEMO%E6%BA%90%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD/&title=配置环境及NEMO源代码下载"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/03/21/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%8ANEMO%E6%BA%90%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD/&is_video=false&description=配置环境及NEMO源代码下载"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=配置环境及NEMO源代码下载&body=Check out this article: http://example.com/2024/03/21/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%8ANEMO%E6%BA%90%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/03/21/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%8ANEMO%E6%BA%90%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD/&title=配置环境及NEMO源代码下载"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/03/21/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%8ANEMO%E6%BA%90%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD/&title=配置环境及NEMO源代码下载"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/03/21/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%8ANEMO%E6%BA%90%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD/&title=配置环境及NEMO源代码下载"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/03/21/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%8ANEMO%E6%BA%90%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD/&title=配置环境及NEMO源代码下载"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/03/21/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%8ANEMO%E6%BA%90%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD/&name=配置环境及NEMO源代码下载&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/03/21/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%8ANEMO%E6%BA%90%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD/&t=配置环境及NEMO源代码下载"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/03/21/Download%20NEMO%20code%20and%20environment%20configuration/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/03/21/Download%20NEMO%20code%20and%20environment%20configuration/&text=配置环境及NEMO源代码下载"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/03/21/Download%20NEMO%20code%20and%20environment%20configuration/&title=配置环境及NEMO源代码下载"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/03/21/Download%20NEMO%20code%20and%20environment%20configuration/&is_video=false&description=配置环境及NEMO源代码下载"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=配置环境及NEMO源代码下载&body=Check out this article: http://example.com/2024/03/21/Download%20NEMO%20code%20and%20environment%20configuration/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/03/21/Download%20NEMO%20code%20and%20environment%20configuration/&title=配置环境及NEMO源代码下载"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/03/21/Download%20NEMO%20code%20and%20environment%20configuration/&title=配置环境及NEMO源代码下载"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/03/21/Download%20NEMO%20code%20and%20environment%20configuration/&title=配置环境及NEMO源代码下载"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/03/21/Download%20NEMO%20code%20and%20environment%20configuration/&title=配置环境及NEMO源代码下载"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/03/21/Download%20NEMO%20code%20and%20environment%20configuration/&name=配置环境及NEMO源代码下载&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/03/21/Download%20NEMO%20code%20and%20environment%20configuration/&t=配置环境及NEMO源代码下载"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
