@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>generate ssh key to login server</title>
+      <link href="/2024/03/22/generate-ssh-key-to-login-server/"/>
+      <url>/2024/03/22/generate-ssh-key-to-login-server/</url>
+      
+        <content type="html"><![CDATA[<h1 id="一、本地PC端操作流程："><a href="#一、本地PC端操作流程：" class="headerlink" title="一、本地PC端操作流程："></a>一、本地PC端操作流程：</h1><p><strong>推荐使用MobaXterm登陆；下载地址：</strong><a href="https://mobaxterm.mobatek.net/download.html">MobaXterm Xserver with SSH, telnet, RDP, VNC and X11 - Download (mobatek.net)</a></p><ol><li>生成证书口令</li></ol><p><img src="https://cdn.jsdelivr.net/gh/jiaoyueLIB/images@main/img/image-20240322134618408.png" alt="image-20240322134618408"></p><p><img src="https://cdn.jsdelivr.net/gh/jiaoyueLIB/images@main/img/image-20240322134643908.png" alt="image-20240322134643908"></p><p>记得用鼠标在空白处滑动，好像它的随机数是由鼠标轨迹加密的。</p><ol start="2"><li>复制添加public key的内容（第一个红框）到各自home目录下的&#x2F;.ssh&#x2F;authorized_keys文件（此目录和文件夹需要自己创建）里，注意每个key是一整行，key的内容不要有换行；不同的key要在不同行内。</li></ol><p>（建议先存储在txt里 方便粘贴）</p><p><strong>再将这个txt文件复制一个副本， 将整个文件改名为authorized_keys （之后直接将这个文件拖进去就好）</strong></p><p>Key comment备注一下信息便于自己分辨用途或来源</p><p><img src="https://cdn.jsdelivr.net/gh/jiaoyueLIB/images@main/img/image-20240322134823065.png" alt="image-20240322134823065"></p><ol start="3"><li>Save private key到本地一个文件（私钥）</li></ol><p>此步骤生成一个后缀名为.ppk的文件，请妥善保存，并知晓存储的位置。</p><ol start="4"><li>Use private key选择该文件</li></ol><p><img src="https://cdn.jsdelivr.net/gh/jiaoyueLIB/images@main/img/image-20240322135412652.png" alt="image-20240322135412652"></p><p>#二 、 在服务器端的操作</p><ol><li><p>先用原来的账号密码登陆到自己的文件夹；注意端口更改为：23422</p></li><li><p>生成和粘贴口令</p></li></ol><p>注意每个人要用到各自的目录下，不要放root目录，图片是范例</p><p>在自己的目录下，赋予文件权限<br> <div class="highlight-wrap" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -m 700 .ssh/</span><br><span class="line"><span class="built_in">cd</span> .ssh/</span><br></pre></td></tr></table></figure></div></p><p><img src="https://cdn.jsdelivr.net/gh/jiaoyueLIB/images@main/img/image-20240322135026411.png" alt="image-20240322135026411"></p><p><strong>将authorized_keys文件 拖进这个 .ssh&#x2F;文件夹里面</strong></p><p><img src="https://cdn.jsdelivr.net/gh/jiaoyueLIB/images@main/img/image-20240322135141386.png" alt="image-20240322135141386"></p><p>再修改这个文件的权限 </p><div class="highlight-wrap" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> 600 authorized_keys</span><br></pre></td></tr></table></figure></div><ol start="3"><li>修改自己原来的密码，要复杂且需要有大小写字母、数字及特殊符号。（命令：passwd）</li><li>自这次修改密码之后，请大家不要再用账号密码登陆。要用证书登陆，切记切记。（在ssh页面里删除密码）</li></ol><p><img src="https://cdn.jsdelivr.net/gh/jiaoyueLIB/images@main/img/image-20240322135311356.png" alt="image-20240322135311356"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> server </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>配置环境及NEMO源代码下载</title>
       <link href="/2024/03/21/Download%20NEMO%20code%20and%20environment%20configuration/"/>
       <url>/2024/03/21/Download%20NEMO%20code%20and%20environment%20configuration/</url>
