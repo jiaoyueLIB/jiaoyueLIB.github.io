@@ -1,7 +1,9 @@
 ---
 title: 在本地打开服务器的jupyter_notebook
 date: 2024-03-28 10:52:11
-tags: server; python
+tags: 
+- server
+- Python
 
 ---
 
