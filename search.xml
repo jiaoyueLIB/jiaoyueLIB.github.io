@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>在本地打开服务器的jupyter_notebook</title>
+      <link href="/2024/03/28/open-server-jupyter-notebook-on-local/"/>
+      <url>/2024/03/28/open-server-jupyter-notebook-on-local/</url>
+      
+        <content type="html"><![CDATA[<p>参考链接：<a href="https://zhuanlan.zhihu.com/p/427234430">2021.10.29-mobaXterm远程连接jupyter notebook - 知乎 (zhihu.com)</a></p><p>因为近期服务器从账号密码登录，改为了ssh密钥登陆，之前远程打开jupyter notebook的流程不管用liao</p><p>现在找到的最佳方案是 建立一个local SSH Tunnel</p><p>先把这个Tunnel连接上，再去服务器上面打开jupyter 就可以在本地浏览器看到页面啦~~~</p><p>昨天捣鼓了半天github的学生优惠，因为mac端的那个termius会员好贵……</p><p>termius上一样的操作。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> server; python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>记录一颗荔枝核的成长</title>
       <link href="/2024/03/22/recoding-lichee-life/"/>
       <url>/2024/03/22/recoding-lichee-life/</url>
