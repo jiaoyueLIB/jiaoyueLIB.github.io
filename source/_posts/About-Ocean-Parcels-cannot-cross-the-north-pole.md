@@ -38,6 +38,18 @@ ps: 教程上说需要满足：`fieldset.U.lon[:, 0] >= fieldset.U.lon[:, -1]`
 
 但是我的情况是反过来的，所以就改了官方的代码。
 
-![image-20240411220928822](https://cdn.jsdelivr.net/gh/jiaoyueLIB/images@main/img/image-20240411220928822.png)
+<img src="https://cdn.jsdelivr.net/gh/jiaoyueLIB/images@main/img/image-20240411220928822.png" alt="image-20240411220928822" style="zoom:67%;" />
 
 记录一下~
+
+pps:
+
+画图的时候要记得把经度再进行转化，它没有存成改正后的；
+
+```MATLAB
+  lon_tra(lon_tra<-180)=lon_tra(lon_tra<-180)+359.75;
+  lon_tra(lon_tra>180)= lon_tra(lon_tra>180)-359.75;
+% Q:为什么不是360？
+% A:因为我原始数据是-180：179.25
+```
+
