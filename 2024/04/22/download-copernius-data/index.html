@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="最近在下载哥白尼海洋中心的数据，但是该数据还不支持subset的设置，他们又又又升级了下载工具……（小声逼逼 还不如ftp或者之前那个MOTU） 既然不能支持subset，我只能全下下来然后用cdo裁剪了； 但是 这个数据很要命的是 一下载一整年的数据，就报错：[Errno 24] Too many open files。作为普通用户，没有办法像教程中说的改变系统的限制  在Linux系统中，可以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="下载copernicus marine的数据中遇到的问题">
+<meta property="og:url" content="http://example.com/2024/04/22/download-copernius-data/index.html">
+<meta property="og:site_name" content="jiaoyueLIB">
+<meta property="og:description" content="最近在下载哥白尼海洋中心的数据，但是该数据还不支持subset的设置，他们又又又升级了下载工具……（小声逼逼 还不如ftp或者之前那个MOTU） 既然不能支持subset，我只能全下下来然后用cdo裁剪了； 但是 这个数据很要命的是 一下载一整年的数据，就报错：[Errno 24] Too many open files。作为普通用户，没有办法像教程中说的改变系统的限制  在Linux系统中，可以">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-04-22T01:48:56.000Z">
+<meta property="article:modified_time" content="2024-04-22T02:31:22.257Z">
+<meta property="article:author" content="jy">
+<meta property="article:tag" content="server">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>下载copernicus marine的数据中遇到的问题</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/jiaoyueLIB">Projects</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2024/04/11/About-Ocean-Parcels-cannot-cross-the-north-pole/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/04/22/download-copernius-data/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/04/22/download-copernius-data/&text=下载copernicus marine的数据中遇到的问题"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/04/22/download-copernius-data/&title=下载copernicus marine的数据中遇到的问题"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/04/22/download-copernius-data/&is_video=false&description=下载copernicus marine的数据中遇到的问题"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=下载copernicus marine的数据中遇到的问题&body=Check out this article: http://example.com/2024/04/22/download-copernius-data/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/04/22/download-copernius-data/&title=下载copernicus marine的数据中遇到的问题"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/04/22/download-copernius-data/&title=下载copernicus marine的数据中遇到的问题"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/04/22/download-copernius-data/&title=下载copernicus marine的数据中遇到的问题"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/04/22/download-copernius-data/&title=下载copernicus marine的数据中遇到的问题"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/04/22/download-copernius-data/&name=下载copernicus marine的数据中遇到的问题&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/04/22/download-copernius-data/&t=下载copernicus marine的数据中遇到的问题"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        下载copernicus marine的数据中遇到的问题
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">jy</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-04-22T01:48:56.000Z" class="dt-published" itemprop="datePublished">2024-04-22</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/Python/" rel="tag">Python</a>, <a class="p-category" href="/tags/server/" rel="tag">server</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>最近在下载哥白尼海洋中心的数据，但是该数据还不支持subset的设置，他们又又又升级了下载工具……（小声逼逼 还不如ftp或者之前那个MOTU）</p>
+<p>既然不能支持subset，我只能全下下来然后用cdo裁剪了；</p>
+<p>但是 这个数据很要命的是 一下载一整年的数据，就报错：<code>[Errno 24] Too many open files</code>。作为普通用户，没有办法像教程中说的改变系统的限制</p>
+<blockquote>
+<p>在Linux系统中，可以使用<code>ulimit</code>命令来查看和设置文件描述符的限制。  </p>
+</blockquote>
+<p>既如此只能写个循环逐月下载了～python API脚本如下（记得在copernicusmarine的环境下）</p>
+<div class="highlight-wrap" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Import modules</span></span><br><span class="line"><span class="keyword">import</span> copernicusmarine</span><br><span class="line"><span class="keyword">from</span> pprint <span class="keyword">import</span> pprint</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define parameters to run the extraction</span></span><br><span class="line">dataset_id_daily = <span class="string">&quot;cmems_mod_glo_phy-all_my_0.25deg_P1D-m&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Define output storage parameters</span></span><br><span class="line">output_directory = <span class="string">&quot;/~/download_data/&quot;</span></span><br><span class="line"><span class="comment"># Call the get function to save data</span></span><br><span class="line"><span class="keyword">for</span> year <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1993</span>,<span class="number">2022</span>):</span><br><span class="line">    <span class="keyword">for</span> month <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">13</span>):</span><br><span class="line">        get_result_daily = copernicusmarine.get(</span><br><span class="line">        dataset_id=dataset_id_daily,</span><br><span class="line">        <span class="built_in">filter</span>=<span class="string">&quot;*-&quot;</span>+<span class="built_in">str</span>(year)+<span class="built_in">str</span>(month).zfill(<span class="number">2</span>)+<span class="string">&quot;*.nc&quot;</span>,</span><br><span class="line">        output_directory=output_directory,</span><br><span class="line">        no_directories=<span class="literal">True</span>)</span><br><span class="line">        pprint(<span class="string">f&quot;List of saved files: <span class="subst">&#123;get_result__daily&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>对于每下载一个月都要输入<code>y</code>确认的问题</p>
+<div class="highlight-wrap" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 一次</span></span><br><span class="line"><span class="built_in">echo</span> <span class="built_in">yes</span>|[命令] <span class="comment"># 输入 yes</span></span><br><span class="line"><span class="built_in">echo</span> y|[命令] <span class="comment"># 输入 y</span></span><br><span class="line"><span class="comment"># 多次</span></span><br><span class="line"><span class="built_in">yes</span> <span class="built_in">yes</span>|[命令] <span class="comment"># 输入 yes</span></span><br><span class="line"><span class="built_in">yes</span> y|[命令] <span class="comment"># 输入 y</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 例</span></span><br><span class="line"><span class="built_in">yes</span> y|python scripts_of_download_data.py </span><br></pre></td></tr></table></figure></div>
+
+<p>另附 cdo后处理的脚本（<code>cdo_process.sh</code>）：</p>
+<div class="highlight-wrap" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">indir=<span class="string">&quot;download_data&quot;</span></span><br><span class="line"></span><br><span class="line">year=<span class="string">&quot;1999&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Define input and output region</span></span><br><span class="line">region=<span class="string">&quot;-180,180,60,90&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;begin&quot;</span></span><br><span class="line"><span class="keyword">for</span> ((i=<span class="number">1</span>;i&lt;=<span class="number">12</span>;i++)); <span class="keyword">do</span></span><br><span class="line"><span class="comment"># for ((i=4;i&lt;=12;i++)); do</span></span><br><span class="line">month=$(<span class="built_in">printf</span> <span class="string">&quot;%02d&quot;</span> <span class="variable">$i</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">## Sel uv</span></span><br><span class="line">out_uvdir=<span class="string">&quot;uv_sel_01&quot;</span></span><br><span class="line"><span class="keyword">for</span> infile  <span class="keyword">in</span> <span class="variable">$&#123;indir&#125;</span>/*-<span class="variable">$&#123;year&#125;</span><span class="variable">$&#123;month&#125;</span>*.nc; <span class="keyword">do</span></span><br><span class="line">    outfile=<span class="string">&quot;<span class="variable">$&#123;out_uvdir&#125;</span>/uv_oras5_<span class="subst">$(basename $&#123;infile&#125;)</span>&quot;</span></span><br><span class="line">    cdo selname,uo_oras,vo_oras <span class="variable">$&#123;infile&#125;</span> <span class="variable">$&#123;outfile&#125;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Selvariables Finished!!!!&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## Sel Arctic</span></span><br><span class="line">out_regdir=<span class="string">&quot;region_sel_02&quot;</span></span><br><span class="line"><span class="keyword">for</span> infile  <span class="keyword">in</span> <span class="variable">$&#123;out_uvdir&#125;</span>/*-<span class="variable">$&#123;year&#125;</span><span class="variable">$&#123;month&#125;</span>*.nc; <span class="keyword">do</span></span><br><span class="line">    outfile=<span class="string">&quot;<span class="variable">$&#123;out_regdir&#125;</span>/Arc_<span class="subst">$(basename $&#123;infile&#125;)</span>&quot;</span></span><br><span class="line">    cdo sellonlatbox,<span class="variable">$&#123;region&#125;</span> <span class="variable">$&#123;infile&#125;</span> <span class="variable">$&#123;outfile&#125;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Selbox Finished!!!&quot;</span></span><br><span class="line"><span class="built_in">rm</span> <span class="variable">$&#123;out_uvdir&#125;</span>/*-<span class="variable">$&#123;year&#125;</span><span class="variable">$&#123;month&#125;</span>*.nc</span><br><span class="line"></span><br><span class="line"><span class="comment">## sel depth</span></span><br><span class="line">dep_range=<span class="string">&quot;1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35&quot;</span></span><br><span class="line">out_depdir=<span class="string">&quot;dep_sel_03&quot;</span></span><br><span class="line"><span class="keyword">for</span> infile <span class="keyword">in</span> <span class="variable">$&#123;out_regdir&#125;</span>/*-<span class="variable">$&#123;year&#125;</span><span class="variable">$&#123;month&#125;</span>*.nc; <span class="keyword">do</span></span><br><span class="line">    outfile=<span class="string">&quot;<span class="variable">$&#123;out_depdir&#125;</span>/dep_<span class="subst">$(basename $&#123;infile&#125;)</span>&quot;</span></span><br><span class="line">    cdo sellevidx,<span class="variable">$&#123;dep_range&#125;</span> <span class="variable">$&#123;infile&#125;</span> <span class="variable">$&#123;outfile&#125;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="built_in">rm</span> <span class="variable">$&#123;out_regdir&#125;</span>/*-<span class="variable">$&#123;year&#125;</span><span class="variable">$&#123;month&#125;</span>*.nc</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;sel depth Finished!!!!&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## merge time</span></span><br><span class="line">out_final_dir=<span class="string">&#x27;final_data_04&#x27;</span></span><br><span class="line">cdo mergetime <span class="variable">$&#123;out_depdir&#125;</span>/*-<span class="variable">$&#123;year&#125;</span><span class="variable">$&#123;month&#125;</span>*.nc <span class="variable">$&#123;out_final_dir&#125;</span>/Arc_uv_oras5_<span class="variable">$&#123;year&#125;</span><span class="variable">$&#123;month&#125;</span>.nc</span><br><span class="line"><span class="built_in">rm</span> <span class="variable">$&#123;out_depdir&#125;</span>/*-<span class="variable">$&#123;year&#125;</span><span class="variable">$&#123;month&#125;</span>*.nc</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$&#123;year&#125;</span><span class="variable">$&#123;month&#125;</span> Mergetime Finished&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#rm $&#123;indir&#125;/*-$&#123;year&#125;$&#123;month&#125;*.nc</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<p>还尝试了用wget下载的方法，但是它不支持😮‍💨</p>
+<div class="highlight-wrap" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> wget</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">str1 = <span class="string">&quot;https://data.marine.copernicus.eu/product/GLOBAL_MULTIYEAR_PHY_ENS_001_031/files?subdataset=cmems_mod_glo_&gt;</span></span><br><span class="line"><span class="string">str2 = &quot;</span>cmems_mod_glo_phy-all_my_0<span class="number">.25</span>deg_P1D-m-<span class="string">&quot;</span></span><br><span class="line"><span class="string">str3 = &quot;</span>.nc<span class="string">&quot;</span></span><br><span class="line"><span class="string">for year in range(2020,2022):</span></span><br><span class="line"><span class="string">    for month in range(1, 13):</span></span><br><span class="line"><span class="string">        for day in range(1, 32):</span></span><br><span class="line"><span class="string">            url = str1 + &quot;</span>&#123;&#125;<span class="string">&quot;.format(year) +&quot;</span>/<span class="string">&quot;+ &quot;</span>&#123;:02d&#125;<span class="string">&quot;.format(month)+&quot;</span>/<span class="string">&quot;+ str2+&quot;</span>&#123;&#125;<span class="string">&quot;.format(year)+&quot;</span>&#123;:02d&#125;<span class="string">&quot;.forma&gt;</span></span><br><span class="line"><span class="string">            path1 = &#x27;~/down_wget_test/&#x27;</span></span><br><span class="line"><span class="string">            file_path = os.path.join(path1)</span></span><br><span class="line"><span class="string">            if not os.path.exists(file_path):</span></span><br><span class="line"><span class="string">                os.makedirs(file_path)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">            try:</span></span><br><span class="line"><span class="string">                wget.download(url, out=file_path)</span></span><br><span class="line"><span class="string">            except:</span></span><br><span class="line"><span class="string">                print(&quot;</span>File:<span class="string">&quot; + str2 + &quot;</span>&#123;<span class="number">0</span>&#125;&#123;<span class="number">1</span>:02d&#125;&#123;<span class="number">2</span>:02d&#125;<span class="string">&quot;.format(year, month, day) + str3 + &quot;</span> does <span class="keyword">not</span> exist<span class="string">&quot;)</span></span><br><span class="line"><span class="string"></span></span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<p>查看nc文件的数量（检查一下是不是下载全了）</p>
+<p><code>find -name &quot;*-1993*.nc&quot; | wc -l</code></p>
+<hr>
+<p>CLI的命令</p>
+<div class="highlight-wrap" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">copernicusmarine get --dataset-id cmems_mod_glo_phy-all_my_0.25deg_P1D-m -nd --filter <span class="string">&quot;*1997/10/*&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<hr>
+<p>Conferences：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Roy_70/article/details/78423880">too many open files(打开的文件过多)</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.baidu.com/article/3269701">[Errno 24] Too many open files</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/linyisonger/article/details/106469176">Linux_shell自动输入y或yes</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Mluoo/article/details/128557284">python wget 批量下载</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44324367/article/details/111312156">shell 脚本的循环</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/377523024">linux 查看文件数量</a></p>
+
+  </div>
+</article>
+
+
+    <div class="blog-post-comments">
+        <div id="utterances_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="https://github.com/jiaoyueLIB">Projects</a></li>
+        
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/04/22/download-copernius-data/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/04/22/download-copernius-data/&text=下载copernicus marine的数据中遇到的问题"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/04/22/download-copernius-data/&title=下载copernicus marine的数据中遇到的问题"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/04/22/download-copernius-data/&is_video=false&description=下载copernicus marine的数据中遇到的问题"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=下载copernicus marine的数据中遇到的问题&body=Check out this article: http://example.com/2024/04/22/download-copernius-data/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/04/22/download-copernius-data/&title=下载copernicus marine的数据中遇到的问题"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/04/22/download-copernius-data/&title=下载copernicus marine的数据中遇到的问题"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/04/22/download-copernius-data/&title=下载copernicus marine的数据中遇到的问题"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/04/22/download-copernius-data/&title=下载copernicus marine的数据中遇到的问题"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/04/22/download-copernius-data/&name=下载copernicus marine的数据中遇到的问题&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/04/22/download-copernius-data/&t=下载copernicus marine的数据中遇到的问题"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2024
+    jy
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+      --><li><a href="/">Home</a></li><!--
+    --><!--
+      --><li><a href="/about/">About</a></li><!--
+    --><!--
+      --><li><a href="/archives/">Writing</a></li><!--
+    --><!--
+      --><li><a target="_blank" rel="noopener" href="https://github.com/jiaoyueLIB">Projects</a></li><!--
+    --><!--
+      --><li><a href="/search/">Search</a></li><!--
+    -->
+      </ul>
+      <ul>
+        
+          <!-- 不蒜子统计 -->
+          <span id="busuanzi_container_site_pv">
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+          </span>
+          <span class="post-meta-divider">|</span>
+          <span id="busuanzi_container_site_uv" style='display:none'>
+                  本站访客数<span id="busuanzi_value_site_uv"></span>人
+          </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+      </ul>
+    </nav>
+  </div>
+  
+</footer>
+
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+  <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?08a34aaba5d629ac7643323e26f63573";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+    <script type="text/javascript">
+      var utterances_repo = 'jiaoyueLIB/jiaoyueLIB.github.io';
+      var utterances_issue_term = 'pathname';
+      var utterances_label = 'Comment';
+      var utterances_theme = 'github-dark';
+
+      (function(){
+          var script = document.createElement('script');
+
+          script.src = 'https://utteranc.es/client.js';
+          script.setAttribute('repo', utterances_repo);
+          script.setAttribute('issue-term', 'pathname');
+          script.setAttribute('label', utterances_label);
+          script.setAttribute('theme', utterances_theme);
+          script.setAttribute('crossorigin', 'anonymous');
+          script.async = true;
+          (document.getElementById('utterances_thread')).appendChild(script);
+      }());
+  </script>
+
+</body>
+</html>
