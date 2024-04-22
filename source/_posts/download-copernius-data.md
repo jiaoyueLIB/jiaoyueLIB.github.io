@@ -31,7 +31,7 @@ for year in range(1993,2022):
     for month in range(1,13):
         get_result_daily = copernicusmarine.get(
         dataset_id=dataset_id_daily,
-        filter="*"+str(year)+str(month).zfill(2)+"*.nc",
+        filter="*-"+str(year)+str(month).zfill(2)+"*.nc",
         output_directory=output_directory,
         no_directories=True)
         pprint(f"List of saved files: {get_result__daily}")
@@ -69,7 +69,7 @@ month=$(printf "%02d" $i)
 
 ## Sel uv
 out_uvdir="uv_sel_01"
-for infile  in ${indir}/*${year}${month}*.nc; do
+for infile  in ${indir}/*-${year}${month}*.nc; do
     outfile="${out_uvdir}/uv_oras5_$(basename ${infile})"
     cdo selname,uo_oras,vo_oras ${infile} ${outfile}
 done
@@ -77,30 +77,30 @@ echo "Selvariables Finished!!!!"
 
 ## Sel Arctic
 out_regdir="region_sel_02"
-for infile  in ${out_uvdir}/*${year}${month}*.nc; do
+for infile  in ${out_uvdir}/*-${year}${month}*.nc; do
     outfile="${out_regdir}/Arc_$(basename ${infile})"
     cdo sellonlatbox,${region} ${infile} ${outfile}
 done
 echo "Selbox Finished!!!"
-rm ${out_uvdir}/*${year}${month}*.nc
+rm ${out_uvdir}/*-${year}${month}*.nc
 
 ## sel depth
 dep_range="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35"
 out_depdir="dep_sel_03"
-for infile in ${out_regdir}/*${year}${month}*.nc; do
+for infile in ${out_regdir}/*-${year}${month}*.nc; do
     outfile="${out_depdir}/dep_$(basename ${infile})"
     cdo sellevidx,${dep_range} ${infile} ${outfile}
 done
-rm ${out_regdir}/*${year}${month}*.nc
+rm ${out_regdir}/*-${year}${month}*.nc
 echo "sel depth Finished!!!!"
 
 ## merge time
 out_final_dir='final_data_04'
-cdo mergetime ${out_depdir}/*${year}${month}*.nc ${out_final_dir}/Arc_uv_oras5_${year}${month}.nc
-rm ${out_depdir}/*${year}${month}*.nc
+cdo mergetime ${out_depdir}/*-${year}${month}*.nc ${out_final_dir}/Arc_uv_oras5_${year}${month}.nc
+rm ${out_depdir}/*-${year}${month}*.nc
 echo "${year}${month} Mergetime Finished"
 
-#rm ${indir}/*${year}${month}*.nc
+#rm ${indir}/*-${year}${month}*.nc
 
 done
 ```
