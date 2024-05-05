@@ -138,3 +138,5 @@ tags:
 涡度的平均场
 
 Vorticity is the curl of velocity and because velocity acts to the right of the gradient in DOT or DH, vorticity is proportional to the Laplacian of DOT. In Fig. 3, vorticity $\Psi$ is calculated as $\Psi= (g/f)\Lambda h$, where h is DH500 or DOT
+
+## Examples of the cyclonic
