@@ -11,6 +11,15 @@
   </url>
   
   <url>
+    <loc>http://example.com/2024/05/09/writing-phrase-accumulate/</loc>
+    
+    <lastmod>2024-05-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://example.com/2024/04/28/2022-Arctic-special/</loc>
     
     <lastmod>2024-05-09</lastmod>
@@ -160,13 +169,6 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/python/</loc>
-    <lastmod>2024-05-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://example.com/tags/Model/</loc>
     <lastmod>2024-05-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -182,6 +184,13 @@
   
   <url>
     <loc>http://example.com/tags/Python/</loc>
+    <lastmod>2024-05-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/python/</loc>
     <lastmod>2024-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

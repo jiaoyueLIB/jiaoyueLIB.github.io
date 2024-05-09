@@ -4,11 +4,24 @@
   
     
     <entry>
+      <title>writing phrase accumulate</title>
+      <link href="/2024/05/09/writing-phrase-accumulate/"/>
+      <url>/2024/05/09/writing-phrase-accumulate/</url>
+      
+        <content type="html"><![CDATA[<p>In contrast, …</p><p>In particular, …</p><p>Thus&#x2F;therefore, …</p><p>This indicates&#x2F;illustrates&#x2F;suggests&#x2F;implies that</p><p>This allows for …</p><p>It should be noted that … &#x2F; Note that….</p><p>sth and sth denote&#x2F;are sth and sth, respectively</p><p>Fig.? and Fig.? respectively show that ..</p><p>Figure ? shows&#x2F;displays&#x2F;depicts …</p><p>As shown&#x2F;indicated in Figure ??…</p><p>An inspection of …of Fig. ? Reveals that </p><p>To examine…, we plot … in Figure??</p><p>As described&#x2F;mentioned above, …</p><p>Recent studies have shown that …</p><p>… accounts for ??% of the total …</p><p>To access …, we use …</p><p>… increase&#x2F;decrease by a factor of …</p><p>… is statistically significant above the 95% confidence level </p><p>… consistent with…</p><p>This is likely due to..</p><p>Additionally,…</p><p>… corresponds to …</p><p>Similarly, …</p><p>The reverse is true when…</p><p>As a consequence,…</p><p>It is worth mentioning that</p><p>It relevant to mention that </p><p>The aforementioned …</p><p>See Fig. 1 in Tom et al. </p><p>A comparison of sth with sth indicates that</p><p>to name a few</p><p>is with respect to…</p><p>This is in accordance with…</p><p>It has long been discussed…</p><p>It has just been realized ….</p><p>Without loss of generality,</p><p>It should be mentioned that </p><p>For a detailed…, refer to ….</p><ul><li><p>As shown above,</p></li><li><p>Particularly, …</p></li><li><p>We remark that …</p></li><li><p>… is left for future investigation.</p></li></ul>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>vscode shortcuts when writing by latex</title>
       <link href="/2024/05/09/vscode-shortcuts-when-writing-by-latex/"/>
       <url>/2024/05/09/vscode-shortcuts-when-writing-by-latex/</url>
       
-        <content type="html"><![CDATA[<h2 id="Win"><a href="#Win" class="headerlink" title="Win"></a>Win</h2><p>自动换行：<code>alt+z</code></p>]]></content>
+        <content type="html"><![CDATA[<h2 id="Win"><a href="#Win" class="headerlink" title="Win"></a>Win</h2><p>自动换行：<code>alt + z</code></p><p>撤销：<code>ctrl + z</code></p><p>恢复撤销：<code>ctrl + shift +z</code></p><p>从<code>.tex</code>跳转至<code>.pdf</code>页面： <code>Ctrl+Alt+J</code></p><p>从<code>.pdf</code>跳转至<code>.tex</code>页面 ：<code>&quot;double-click&quot;</code> or <code>&quot;ctrl-click&quot;</code></p><p>编译当前<code>.tex</code>：  <code>Ctrl+Alt+R</code> 再选择</p>]]></content>
       
       
       
