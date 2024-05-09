@@ -48,10 +48,42 @@ nohup python -W ignore Nan_WEB/Nan_WEB_backwards_level1_MM10.py > Nan_WEB/log_in
 
 
 ```bash
-nohup python -W ignore Aum_EEB/Aum_EEB_backwards_level18_all.py > Aum_EEB/log_info/level18.log 2>&1 &
-nohup python -W ignore Aum_WEB/Aum_WEB_backwards_level18_all.py > Aum_WEB/log_info/level18.log 2>&1 &
-nohup python -W ignore Nan_EEB/Nan_EEB_backwards_level18_all.py > Nan_EEB/log_info/level18.log 2>&1 &
-nohup python -W ignore Nan_WEB/Nan_WEB_backwards_level18_all.py > Nan_WEB/log_info/level18.log 2>&1 &
+nohup python -W ignore Aum_EEB/Aum_EEB_backwards_level26_all.py > Aum_EEB/log_info/level26.log 2>&1 &
+nohup python -W ignore Aum_WEB/Aum_WEB_backwards_level26_all.py > Aum_WEB/log_info/level26.log 2>&1 &
+nohup python -W ignore Nan_EEB/Nan_EEB_backwards_level26_all.py > Nan_EEB/log_info/level26.log 2>&1 &
+nohup python -W ignore Nan_WEB/Nan_WEB_backwards_level26_all.py > Nan_WEB/log_info/level26.log 2>&1 &
 
+```
+
+cdo 重采样
+
+```
+cdo remapnn,grid.txt infile.nc outfile.nc
+```
+
+the content of `grid.txt` is as following:
+
+```
+gridtype = lonlat
+xsize = 1440
+ysize = 240
+xfirst = -180
+xinc = 0.25
+yfirst = 60
+yinc = 0.125
+```
+
+```
+#!/bin/bash
+indir="vomecrtn"
+
+echo "begin"
+## remap
+out_uvdir="remap_files/vomecrtn"
+for infile  in ${indir}/*.nc; do
+    outfile="${out_uvdir}/lonlatbox_$(basename ${infile})"
+    cdo remapnn,grid.txt ${infile} ${outfile}
+done
+echo "remap Finished!!!!"
 ```
 

@@ -140,3 +140,35 @@ tags:
 Vorticity is the curl of velocity and because velocity acts to the right of the gradient in DOT or DH, vorticity is proportional to the Laplacian of DOT. In Fig. 3, vorticity $\Psi$ is calculated as $\Psi= (g/f)\Lambda h$, where h is DH500 or DOT
 
 ## Examples of the cyclonic
+
+## 8. Discussion
+
+冬季AO从1989年向正相位转变，在过去20-30年里北冰洋的环流一直处于气旋式（逆时针）表面环流主导，主要特征为
+
+- 北冰洋平均涡度的上升
+- DOT低值穿过在北冰洋俄罗斯一侧
+- BG范围小但强度大
+- 穿极漂流的气旋式转变
+
+以气旋的角度看
+
+大背景：反气旋式环流在波弗特流涡区（BGH regimed);EB存在一个深层的气旋式环流的趋势（可能会有）；这样就会在气旋和反气旋式环流之间存在一个边界，这个边界会在Amundsen 海盆和Makarov海盆之间变动。
+
+AO+的时候，气旋式大气强迫（也就是SLP low）会从欧亚海盆延伸至Makarov 海盆；气旋式环流也从本来在EB区域扩展至Makarov海盆；穿极漂流转向北美区域（看图Fig3的灰色箭头）；北欧海的风力增加，大西洋水流入也增加，北极海盆的深层的气旋式环流也会进一步的增强。
+
+AO-的时候，EB和Makarov 海盆的大气压强会上升，在其上的表层环流就会变成反气旋的，与深层的气旋式环流对抗；Transpolar Front 会转向俄罗斯方向。
+
+总之，可以理解为正反气旋的大战。AO+气旋式环流主导；AO-反气旋式环流主导；
+
+
+$$
+DH_{500}=\int ^{0m }_{500m } {(\frac{\rho_{ref}-\rho_{T,S,P}}{\rho_{ref}} )dz}
+$$
+**[前沿 |1979年以来北冰洋海平面变化基于ORAS5数据 (frontiersin.org)](https://www.frontiersin.org/articles/10.3389/fmars.2023.1197456/full)**
+
+这篇可以说明ORAS5的SSH可用，他将ORAS5的SSH和CPOM和DTU的做了对比
+
+
+
+
+
