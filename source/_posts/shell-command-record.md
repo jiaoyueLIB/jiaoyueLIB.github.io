@@ -87,3 +87,18 @@ done
 echo "remap Finished!!!!"
 ```
 
+``` bash
+nohup python -W ignore fresh_mask_backwards_level18_MM01.py > log_info/level18_MM01.log 2>&1 &
+nohup python -W ignore fresh_mask_backwards_level18_MM02.py > log_info/level18_MM02.log 2>&1 &
+nohup python -W ignore fresh_mask_backwards_level18_MM03.py > log_info/level18_MM03.log 2>&1 &
+nohup python -W ignore fresh_mask_backwards_level18_MM04.py > log_info/level18_MM04.log 2>&1 &
+nohup python -W ignore fresh_mask_backwards_level18_MM05.py > log_info/level18_MM05.log 2>&1 &
+nohup python -W ignore fresh_mask_backwards_level18_MM06.py > log_info/level18_MM06.log 2>&1 &
+nohup python -W ignore fresh_mask_backwards_level18_MM07.py > log_info/level18_MM07.log 2>&1 &
+nohup python -W ignore fresh_mask_backwards_level18_MM08.py > log_info/level18_MM08.log 2>&1 &
+nohup python -W ignore fresh_mask_backwards_level18_MM09.py > log_info/level18_MM09.log 2>&1 &
+nohup python -W ignore fresh_mask_backwards_level18_MM10.py > log_info/level18_MM10.log 2>&1 &
+nohup python -W ignore fresh_mask_backwards_level18_MM11.py > log_info/level18_MM11.log 2>&1 &
+nohup python -W ignore fresh_mask_backwards_level18_MM12.py > log_info/level18_MM12.log 2>&1 &
+```
+
