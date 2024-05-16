@@ -164,6 +164,10 @@ AO-的时候，EB和Makarov 海盆的大气压强会上升，在其上的表层�
 $$
 DH_{500}=\int ^{0m }_{500m } {(\frac{\rho_{ref}-\rho_{T,S,P}}{\rho_{ref}} )dz}
 $$
+
+
+
+
 **[前沿 |1979年以来北冰洋海平面变化基于ORAS5数据 (frontiersin.org)](https://www.frontiersin.org/articles/10.3389/fmars.2023.1197456/full)**
 
 这篇可以说明ORAS5的SSH可用，他将ORAS5的SSH和CPOM和DTU的做了对比
