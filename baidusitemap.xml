@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://example.com/2024/03/22/recoding-lichee-life/</loc>
+    <lastmod>2024-06-05</lastmod>
+  </url>
+  <url>
+    <loc>http://example.com/2024/04/28/2022-Arctic-special/</loc>
+    <lastmod>2024-06-05</lastmod>
+  </url>
+  <url>
     <loc>http://example.com/2024/04/27/shell-command-record/</loc>
     <lastmod>2024-05-31</lastmod>
   </url>
   <url>
     <loc>http://example.com/2024/05/22/some_notes_for_bwiki/</loc>
     <lastmod>2024-05-22</lastmod>
-  </url>
-  <url>
-    <loc>http://example.com/2024/04/28/2022-Arctic-special/</loc>
-    <lastmod>2024-05-16</lastmod>
   </url>
   <url>
     <loc>http://example.com/2024/05/09/vscode-shortcuts-when-writing-by-latex/</loc>
@@ -35,10 +39,6 @@
   <url>
     <loc>http://example.com/2024/03/28/open-server-jupyter-notebook-on-local/</loc>
     <lastmod>2024-04-01</lastmod>
-  </url>
-  <url>
-    <loc>http://example.com/2024/03/22/recoding-lichee-life/</loc>
-    <lastmod>2024-03-22</lastmod>
   </url>
   <url>
     <loc>http://example.com/2024/03/22/A-strange-tree/</loc>
