@@ -48,10 +48,10 @@ nohup python -W ignore Nan_WEB/Nan_WEB_backwards_level1_MM10.py > Nan_WEB/log_in
 
 
 ```bash
-nohup python -W ignore Aum_EEB/Aum_EEB_backwards_level26_all.py > Aum_EEB/log_info/level26.log 2>&1 &
-nohup python -W ignore Aum_WEB/Aum_WEB_backwards_level26_all.py > Aum_WEB/log_info/level26.log 2>&1 &
-nohup python -W ignore Nan_EEB/Nan_EEB_backwards_level26_all.py > Nan_EEB/log_info/level26.log 2>&1 &
-nohup python -W ignore Nan_WEB/Nan_WEB_backwards_level26_all.py > Nan_WEB/log_info/level26.log 2>&1 &
+nohup python -W ignore Aum_EEB/Aum_EEB_backwards_level29_all.py > Aum_EEB/log_info/level29.log 2>&1 &
+nohup python -W ignore Aum_WEB/Aum_WEB_backwards_level29_all.py > Aum_WEB/log_info/level29.log 2>&1 &
+nohup python -W ignore Nan_EEB/Nan_EEB_backwards_level29_all.py > Nan_EEB/log_info/level29.log 2>&1 &
+nohup python -W ignore Nan_WEB/Nan_WEB_backwards_level29_all.py > Nan_WEB/log_info/level29.log 2>&1 &
 
 ```
 

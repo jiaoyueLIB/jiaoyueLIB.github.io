@@ -113,3 +113,8 @@ sitemap:
 baidusitemap:
   path: baidusitemap.xml
 
+# for latex 
+math:
+  engine: 'mathjax'
+  mathjax:
+    src: custom_mathjax_source
