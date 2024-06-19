@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="一、本地PC端操作流程： 推荐使用MobaXterm登陆；下载地址：MobaXterm Xserver with SSH, telnet, RDP, VNC and X11 - Download (mobatek.net)  生成证书口令    image-20240322134618408    image-20240322134643908  记得用鼠标在空白处滑动">
+    <meta name="description" content="一、本地PC端操作流程：推荐使用MobaXterm登陆；下载地址：MobaXterm Xserver with SSH, telnet, RDP, VNC and X11 - Download (mobatek.net)  生成证书口令    记得用鼠标在空白处滑动，好像它的随机数是由鼠标轨迹加密的。  复制添加public key的内容（第一个红框）到各自home目录下的&#x2F;.ssh&#x2F;author">
 <meta property="og:type" content="article">
 <meta property="og:title" content="generate ssh key to login server">
 <meta property="og:url" content="http://example.com/2024/03/22/generate-ssh-key-to-login-server/index.html">
 <meta property="og:site_name" content="jiaoyueLIB">
-<meta property="og:description" content="一、本地PC端操作流程： 推荐使用MobaXterm登陆；下载地址：MobaXterm Xserver with SSH, telnet, RDP, VNC and X11 - Download (mobatek.net)  生成证书口令    image-20240322134618408    image-20240322134643908  记得用鼠标在空白处滑动">
+<meta property="og:description" content="一、本地PC端操作流程：推荐使用MobaXterm登陆；下载地址：MobaXterm Xserver with SSH, telnet, RDP, VNC and X11 - Download (mobatek.net)  生成证书口令    记得用鼠标在空白处滑动，好像它的随机数是由鼠标轨迹加密的。  复制添加public key的内容（第一个红框）到各自home目录下的&#x2F;.ssh&#x2F;author">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/jiaoyueLIB/images@main/img/image-20240322134618408.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/jiaoyueLIB/images@main/img/image-20240322134643908.png">
@@ -125,7 +125,7 @@
     
     
       <div id="toc">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E6%9C%AC%E5%9C%B0pc%E7%AB%AF%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">一、本地PC端操作流程：</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%9C%AC%E5%9C%B0PC%E7%AB%AF%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">一、本地PC端操作流程：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C-%E3%80%81-%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">二 、 在服务器端的操作</span></a></li></ol>
       </div>
     
   </span>
@@ -170,70 +170,46 @@
   
 
   <div class="content e-content" itemprop="articleBody">
-    <h1 id="一本地pc端操作流程">一、本地PC端操作流程：</h1>
-<p><strong>推荐使用MobaXterm登陆；下载地址：</strong><a target="_blank" rel="noopener" href="https://mobaxterm.mobatek.net/download.html">MobaXterm Xserver
-with SSH, telnet, RDP, VNC and X11 - Download (mobatek.net)</a></p>
-<ol type="1">
+    <h1 id="一、本地PC端操作流程："><a href="#一、本地PC端操作流程：" class="headerlink" title="一、本地PC端操作流程："></a>一、本地PC端操作流程：</h1><p><strong>推荐使用MobaXterm登陆；下载地址：</strong><a target="_blank" rel="noopener" href="https://mobaxterm.mobatek.net/download.html">MobaXterm Xserver with SSH, telnet, RDP, VNC and X11 - Download (mobatek.net)</a></p>
+<ol>
 <li>生成证书口令</li>
 </ol>
-<figure>
-<img src="https://cdn.jsdelivr.net/gh/jiaoyueLIB/images@main/img/image-20240322134618408.png" alt="image-20240322134618408">
-<figcaption aria-hidden="true">image-20240322134618408</figcaption>
-</figure>
-<figure>
-<img src="https://cdn.jsdelivr.net/gh/jiaoyueLIB/images@main/img/image-20240322134643908.png" alt="image-20240322134643908">
-<figcaption aria-hidden="true">image-20240322134643908</figcaption>
-</figure>
+<p><img src="https://cdn.jsdelivr.net/gh/jiaoyueLIB/images@main/img/image-20240322134618408.png" alt="image-20240322134618408"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/jiaoyueLIB/images@main/img/image-20240322134643908.png" alt="image-20240322134643908"></p>
 <p>记得用鼠标在空白处滑动，好像它的随机数是由鼠标轨迹加密的。</p>
-<ol start="2" type="1">
-<li>复制添加public
-key的内容（第一个红框）到各自home目录下的/.ssh/authorized_keys文件（此目录和文件夹需要自己创建）里，注意每个key是一整行，key的内容不要有换行；不同的key要在不同行内。</li>
+<ol>
+<li>复制添加public key的内容（第一个红框）到各自home目录下的/.ssh/authorized_keys文件（此目录和文件夹需要自己创建）里，注意每个key是一整行，key的内容不要有换行；不同的key要在不同行内。</li>
 </ol>
 <p>（建议先存储在txt里 方便粘贴）</p>
-<p><strong>再将这个txt文件复制一个副本， 将整个文件改名为authorized_keys
-（之后直接将这个文件拖进去就好）</strong></p>
+<p><strong>再将这个txt文件复制一个副本， 将整个文件改名为authorized_keys （之后直接将这个文件拖进去就好）</strong></p>
 <p>Key comment备注一下信息便于自己分辨用途或来源</p>
-<figure>
-<img src="https://cdn.jsdelivr.net/gh/jiaoyueLIB/images@main/img/image-20240322134823065.png" alt="image-20240322134823065">
-<figcaption aria-hidden="true">image-20240322134823065</figcaption>
-</figure>
-<ol start="3" type="1">
+<p><img src="https://cdn.jsdelivr.net/gh/jiaoyueLIB/images@main/img/image-20240322134823065.png" alt="image-20240322134823065"></p>
+<ol>
 <li>Save private key到本地一个文件（私钥）</li>
 </ol>
 <p>此步骤生成一个后缀名为.ppk的文件，请妥善保存，并知晓存储的位置。</p>
-<ol start="4" type="1">
+<ol>
 <li>Use private key选择该文件</li>
 </ol>
-<figure>
-<img src="https://cdn.jsdelivr.net/gh/jiaoyueLIB/images@main/img/image-20240322135412652.png" alt="image-20240322135412652">
-<figcaption aria-hidden="true">image-20240322135412652</figcaption>
-</figure>
-<p>#二 、 在服务器端的操作</p>
-<ol type="1">
-<li><p>先用原来的账号密码登陆到自己的文件夹；注意端口更改为：*****</p></li>
-<li><p>生成和粘贴口令</p></li>
+<p><img src="https://cdn.jsdelivr.net/gh/jiaoyueLIB/images@main/img/image-20240322135412652.png" alt="image-20240322135412652"></p>
+<h1 id="二-、-在服务器端的操作"><a href="#二-、-在服务器端的操作" class="headerlink" title="二 、 在服务器端的操作"></a>二 、 在服务器端的操作</h1><ol>
+<li><p>先用原来的账号密码登陆到自己的文件夹；注意端口更改为：<strong>*</strong></p>
+</li>
+<li><p>生成和粘贴口令 </p>
+</li>
 </ol>
 <p>注意每个人要用到各自的目录下，不要放root目录，图片是范例</p>
-<p>在自己的目录下，赋予文件权限 <div class="highlight-wrap" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -m 700 .ssh/</span><br><span class="line"><span class="built_in">cd</span> .ssh/</span><br></pre></td></tr></table></figure></div></p>
-<figure>
-<img src="https://cdn.jsdelivr.net/gh/jiaoyueLIB/images@main/img/image-20240322135026411.png" alt="image-20240322135026411">
-<figcaption aria-hidden="true">image-20240322135026411</figcaption>
-</figure>
+<p>在自己的目录下，赋予文件权限<br> <div class="highlight-wrap" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -m 700 .ssh/</span><br><span class="line"><span class="built_in">cd</span> .ssh/</span><br></pre></td></tr></table></figure></div></p>
+<p><img src="https://cdn.jsdelivr.net/gh/jiaoyueLIB/images@main/img/image-20240322135026411.png" alt="image-20240322135026411"></p>
 <p><strong>将authorized_keys文件 拖进这个 .ssh/文件夹里面</strong></p>
-<figure>
-<img src="https://cdn.jsdelivr.net/gh/jiaoyueLIB/images@main/img/image-20240322135141386.png" alt="image-20240322135141386">
-<figcaption aria-hidden="true">image-20240322135141386</figcaption>
-</figure>
-<p>再修改这个文件的权限</p>
+<p><img src="https://cdn.jsdelivr.net/gh/jiaoyueLIB/images@main/img/image-20240322135141386.png" alt="image-20240322135141386"></p>
+<p>再修改这个文件的权限 </p>
 <div class="highlight-wrap" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> 600 authorized_keys</span><br></pre></td></tr></table></figure></div>
-<ol start="3" type="1">
+<ol>
 <li>修改自己原来的密码，要复杂且需要有大小写字母、数字及特殊符号。（命令：passwd）</li>
 <li>自这次修改密码之后，请大家不要再用账号密码登陆。要用证书登陆，切记切记。（在ssh页面里删除密码）</li>
 </ol>
-<figure>
-<img src="https://cdn.jsdelivr.net/gh/jiaoyueLIB/images@main/img/image-20240322135311356.png" alt="image-20240322135311356">
-<figcaption aria-hidden="true">image-20240322135311356</figcaption>
-</figure>
+<p><img src="https://cdn.jsdelivr.net/gh/jiaoyueLIB/images@main/img/image-20240322135311356.png" alt="image-20240322135311356"></p>
 
   </div>
 </article>
@@ -269,7 +245,7 @@ key的内容（第一个红框）到各自home目录下的/.ssh/authorized_keys�
     
     
       <div id="toc-footer" style="display: none">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E6%9C%AC%E5%9C%B0pc%E7%AB%AF%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">一、本地PC端操作流程：</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%9C%AC%E5%9C%B0PC%E7%AB%AF%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">一、本地PC端操作流程：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C-%E3%80%81-%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">二 、 在服务器端的操作</span></a></li></ol>
       </div>
     
 
