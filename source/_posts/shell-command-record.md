@@ -48,10 +48,10 @@ nohup python -W ignore Nan_WEB/Nan_WEB_backwards_level1_MM10.py > Nan_WEB/log_in
 
 
 ```bash
-nohup python -W ignore Aum_EEB/Aum_EEB_backwards_level29_all.py > Aum_EEB/log_info/level29.log 2>&1 &
-nohup python -W ignore Aum_WEB/Aum_WEB_backwards_level29_all.py > Aum_WEB/log_info/level29.log 2>&1 &
-nohup python -W ignore Nan_EEB/Nan_EEB_backwards_level29_all.py > Nan_EEB/log_info/level29.log 2>&1 &
-nohup python -W ignore Nan_WEB/Nan_WEB_backwards_level29_all.py > Nan_WEB/log_info/level29.log 2>&1 &
+nohup python -W ignore Aum_EEB/Aum_EEB_backwards_level35_all.py > Aum_EEB/log_info/level35.log 2>&1 &
+nohup python -W ignore Aum_WEB/Aum_WEB_backwards_level35_all.py > Aum_WEB/log_info/level35.log 2>&1 &
+nohup python -W ignore Nan_EEB/Nan_EEB_backwards_level35_all.py > Nan_EEB/log_info/level35.log 2>&1 &
+nohup python -W ignore Nan_WEB/Nan_WEB_backwards_level35_all.py > Nan_WEB/log_info/level35.log 2>&1 &
 
 ```
 
@@ -101,4 +101,24 @@ nohup python -W ignore fresh_mask_backwards_level18_MM10.py > log_info/level18_M
 nohup python -W ignore fresh_mask_backwards_level18_MM11.py > log_info/level18_MM11.log 2>&1 &
 nohup python -W ignore fresh_mask_backwards_level18_MM12.py > log_info/level18_MM12.log 2>&1 &
 ```
+
+
+
+```
+nohup python -W ignore scripts/fresh_mask_backwards_level15.py > log_info/level15.log 2>&1 &
+#计算freshwater的脚本
+```
+
+```
+nohup python -W ignore scripts/fresh_mask_backwards_level16.py > log_info/level16.log 2>&1 &
+nohup python -W ignore scripts/fresh_mask_backwards_level17.py > log_info/level17.log 2>&1 &
+nohup python -W ignore scripts/fresh_mask_backwards_level18.py > log_info/level18.log 2>&1 &
+nohup python -W ignore scripts/fresh_mask_backwards_level19.py > log_info/level19.log 2>&1 &
+nohup python -W ignore scripts/fresh_mask_backwards_level20.py > log_info/level20.log 2>&1 &
+nohup python -W ignore scripts/fresh_mask_backwards_level21.py > log_info/level21.log 2>&1 &
+nohup python -W ignore scripts/fresh_mask_backwards_level22.py > log_info/level22.log 2>&1 &
+nohup python -W ignore scripts/fresh_mask_backwards_level23.py > log_info/level23.log 2>&1 &
+```
+
+
 
