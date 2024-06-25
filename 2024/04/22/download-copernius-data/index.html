@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="最近在下载哥白尼海洋中心的数据，但是该数据还不支持subset的设置，他们又又又升级了下载工具……（小声逼逼 还不如ftp或者之前那个MOTU） 既然不能支持subset，我只能全下下来然后用cdo裁剪了； 但是 这个数据很要命的是 一下载一整年的数据，就报错：[Errno 24] Too many open files。作为普通用户，没有办法像教程中说的改变系统的限制  在Linux系统中，可以">
+    <meta name="description" content="最近在下载哥白尼海洋中心的数据，但是该数据还不支持subset的设置，他们又又又升级了下载工具……（小声逼逼 还不如ftp或者之前那个MOTU） 既然不能支持subset，我只能全下下来然后用cdo裁剪了； 但是 这个数据很要命的是 一下载一整年的数据，就报错：[Errno 24] Too many open files。作为普通用户，没有办法像教程中说的改变系统的限制  在Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="下载copernicus marine的数据中遇到的问题">
 <meta property="og:url" content="http://example.com/2024/04/22/download-copernius-data/index.html">
 <meta property="og:site_name" content="jiaoyueLIB">
-<meta property="og:description" content="最近在下载哥白尼海洋中心的数据，但是该数据还不支持subset的设置，他们又又又升级了下载工具……（小声逼逼 还不如ftp或者之前那个MOTU） 既然不能支持subset，我只能全下下来然后用cdo裁剪了； 但是 这个数据很要命的是 一下载一整年的数据，就报错：[Errno 24] Too many open files。作为普通用户，没有办法像教程中说的改变系统的限制  在Linux系统中，可以">
+<meta property="og:description" content="最近在下载哥白尼海洋中心的数据，但是该数据还不支持subset的设置，他们又又又升级了下载工具……（小声逼逼 还不如ftp或者之前那个MOTU） 既然不能支持subset，我只能全下下来然后用cdo裁剪了； 但是 这个数据很要命的是 一下载一整年的数据，就报错：[Errno 24] Too many open files。作为普通用户，没有办法像教程中说的改变系统的限制  在Linux">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-04-22T01:48:56.000Z">
 <meta property="article:modified_time" content="2024-04-22T02:31:22.257Z">
@@ -159,13 +159,16 @@
   
 
   <div class="content e-content" itemprop="articleBody">
-    <p>最近在下载哥白尼海洋中心的数据，但是该数据还不支持subset的设置，他们又又又升级了下载工具……（小声逼逼 还不如ftp或者之前那个MOTU）</p>
+    <p>最近在下载哥白尼海洋中心的数据，但是该数据还不支持subset的设置，他们又又又升级了下载工具……（小声逼逼
+还不如ftp或者之前那个MOTU）</p>
 <p>既然不能支持subset，我只能全下下来然后用cdo裁剪了；</p>
-<p>但是 这个数据很要命的是 一下载一整年的数据，就报错：<code>[Errno 24] Too many open files</code>。作为普通用户，没有办法像教程中说的改变系统的限制</p>
+<p>但是 这个数据很要命的是
+一下载一整年的数据，就报错：<code>[Errno 24] Too many open files</code>。作为普通用户，没有办法像教程中说的改变系统的限制</p>
 <blockquote>
-<p>在Linux系统中，可以使用<code>ulimit</code>命令来查看和设置文件描述符的限制。  </p>
+<p>在Linux系统中，可以使用<code>ulimit</code>命令来查看和设置文件描述符的限制。</p>
 </blockquote>
-<p>既如此只能写个循环逐月下载了～python API脚本如下（记得在copernicusmarine的环境下）</p>
+<p>既如此只能写个循环逐月下载了～python
+API脚本如下（记得在copernicusmarine的环境下）</p>
 <div class="highlight-wrap" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Import modules</span></span><br><span class="line"><span class="keyword">import</span> copernicusmarine</span><br><span class="line"><span class="keyword">from</span> pprint <span class="keyword">import</span> pprint</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define parameters to run the extraction</span></span><br><span class="line">dataset_id_daily = <span class="string">&quot;cmems_mod_glo_phy-all_my_0.25deg_P1D-m&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Define output storage parameters</span></span><br><span class="line">output_directory = <span class="string">&quot;/~/download_data/&quot;</span></span><br><span class="line"><span class="comment"># Call the get function to save data</span></span><br><span class="line"><span class="keyword">for</span> year <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1993</span>,<span class="number">2022</span>):</span><br><span class="line">    <span class="keyword">for</span> month <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">13</span>):</span><br><span class="line">        get_result_daily = copernicusmarine.get(</span><br><span class="line">        dataset_id=dataset_id_daily,</span><br><span class="line">        <span class="built_in">filter</span>=<span class="string">&quot;*-&quot;</span>+<span class="built_in">str</span>(year)+<span class="built_in">str</span>(month).zfill(<span class="number">2</span>)+<span class="string">&quot;*.nc&quot;</span>,</span><br><span class="line">        output_directory=output_directory,</span><br><span class="line">        no_directories=<span class="literal">True</span>)</span><br><span class="line">        pprint(<span class="string">f&quot;List of saved files: <span class="subst">&#123;get_result__daily&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure></div>
 <p>对于每下载一个月都要输入<code>y</code>确认的问题</p>
 <div class="highlight-wrap" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 一次</span></span><br><span class="line"><span class="built_in">echo</span> <span class="built_in">yes</span>|[命令] <span class="comment"># 输入 yes</span></span><br><span class="line"><span class="built_in">echo</span> y|[命令] <span class="comment"># 输入 y</span></span><br><span class="line"><span class="comment"># 多次</span></span><br><span class="line"><span class="built_in">yes</span> <span class="built_in">yes</span>|[命令] <span class="comment"># 输入 yes</span></span><br><span class="line"><span class="built_in">yes</span> y|[命令] <span class="comment"># 输入 y</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 例</span></span><br><span class="line"><span class="built_in">yes</span> y|python scripts_of_download_data.py </span><br></pre></td></tr></table></figure></div>
@@ -176,18 +179,23 @@
 <div class="highlight-wrap" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> wget</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">str1 = <span class="string">&quot;https://data.marine.copernicus.eu/product/GLOBAL_MULTIYEAR_PHY_ENS_001_031/files?subdataset=cmems_mod_glo_&gt;</span></span><br><span class="line"><span class="string">str2 = &quot;</span>cmems_mod_glo_phy-all_my_0<span class="number">.25</span>deg_P1D-m-<span class="string">&quot;</span></span><br><span class="line"><span class="string">str3 = &quot;</span>.nc<span class="string">&quot;</span></span><br><span class="line"><span class="string">for year in range(2020,2022):</span></span><br><span class="line"><span class="string">    for month in range(1, 13):</span></span><br><span class="line"><span class="string">        for day in range(1, 32):</span></span><br><span class="line"><span class="string">            url = str1 + &quot;</span>&#123;&#125;<span class="string">&quot;.format(year) +&quot;</span>/<span class="string">&quot;+ &quot;</span>&#123;:02d&#125;<span class="string">&quot;.format(month)+&quot;</span>/<span class="string">&quot;+ str2+&quot;</span>&#123;&#125;<span class="string">&quot;.format(year)+&quot;</span>&#123;:02d&#125;<span class="string">&quot;.forma&gt;</span></span><br><span class="line"><span class="string">            path1 = &#x27;~/down_wget_test/&#x27;</span></span><br><span class="line"><span class="string">            file_path = os.path.join(path1)</span></span><br><span class="line"><span class="string">            if not os.path.exists(file_path):</span></span><br><span class="line"><span class="string">                os.makedirs(file_path)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">            try:</span></span><br><span class="line"><span class="string">                wget.download(url, out=file_path)</span></span><br><span class="line"><span class="string">            except:</span></span><br><span class="line"><span class="string">                print(&quot;</span>File:<span class="string">&quot; + str2 + &quot;</span>&#123;<span class="number">0</span>&#125;&#123;<span class="number">1</span>:02d&#125;&#123;<span class="number">2</span>:02d&#125;<span class="string">&quot;.format(year, month, day) + str3 + &quot;</span> does <span class="keyword">not</span> exist<span class="string">&quot;)</span></span><br><span class="line"><span class="string"></span></span><br></pre></td></tr></table></figure></div>
 <hr>
 <p>查看nc文件的数量（检查一下是不是下载全了）</p>
-<p><code>find -name &quot;*-1993*.nc&quot; | wc -l</code></p>
+<p><code>find -name "*-1993*.nc" | wc -l</code></p>
 <hr>
 <p>CLI的命令</p>
 <div class="highlight-wrap" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">copernicusmarine get --dataset-id cmems_mod_glo_phy-all_my_0.25deg_P1D-m -nd --filter <span class="string">&quot;*1997/10/*&quot;</span></span><br></pre></td></tr></table></figure></div>
 <hr>
 <p>Conferences：</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Roy_70/article/details/78423880">too many open files(打开的文件过多)</a></p>
-<p><a target="_blank" rel="noopener" href="https://cloud.baidu.com/article/3269701">[Errno 24] Too many open files</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Roy_70/article/details/78423880">too
+many open files(打开的文件过多)</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.baidu.com/article/3269701">[Errno 24] Too many
+open files</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/linyisonger/article/details/106469176">Linux_shell自动输入y或yes</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Mluoo/article/details/128557284">python wget 批量下载</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44324367/article/details/111312156">shell 脚本的循环</a></p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/377523024">linux 查看文件数量</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Mluoo/article/details/128557284">python wget
+批量下载</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44324367/article/details/111312156">shell
+脚本的循环</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/377523024">linux
+查看文件数量</a></p>
 
   </div>
 </article>
